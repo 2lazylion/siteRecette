@@ -1,0 +1,26 @@
+Page d'acceuil
+    Templates
+        navbar
+        barre de recherche
+        base
+        footer?
+
+Profile
+    Modele 
+    Templates
+        Connexion
+        Creation
+        Edit
+    CRUD
+
+Preferences
+    Modele
+    Templates
+
+Recette
+    Modele (recette, ingredient, Famille Alimentaire)
+    Queries
+    Templates
+        Affichage total
+        Affichage selon preferences
+        Affichage selon ingedient
