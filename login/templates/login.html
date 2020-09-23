@@ -1,0 +1,17 @@
+{% extends '../templates/base.html' %}
+{% block title %}
+    Login
+{% endblock %}
+
+{% block login %}
+<div class="row col-10">
+    <form action="" method="POST">
+        <!-- Very important Cross-site Request Forgery Token -->
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Connexion">
+    </form>
+</div>
+{% endblock %}
