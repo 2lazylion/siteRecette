@@ -25,3 +25,7 @@ Recette
         Affichage total
         Affichage selon preferences
         Affichage selon ingedient
+
+assaisonements
+
+quantité
