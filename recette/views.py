@@ -17,6 +17,10 @@ def getRecette(request):
     
     # récupère la recette de la bd
     recette = Recette.objects.get(pk=id)
+
+    # TODO: récupère les ingrédients qui sont relier à la recette de la bd
     
+    # TODO: récupère les étapes de préparation qui sont relier à la recette de la bd
+
     # retourne la recette à la page web
     return render(request, 'templates/recette.html', {'recette': recette})
