@@ -17,11 +17,14 @@ class Ingredient(models.Model):
     # enum pour les familles alimentaires
     class FamilleAlimentaire(models.TextChoices):
         FRUIT_LEGUME = 'fruit/legume' 
+        FINES_HERBES = 'fines herbes'
+        CEREALES = 'cereales'
         VIANDE = 'viande'
         POISSON = 'poisson'
         PROTEINE_VEGETARIENNE = 'proteine vegetarienne'
         BOISSON = 'boissson'
         MATIERE_GRASSE = 'matiere grasse'
+        PRODUIT_LAITIER = 'produit laitier'
         PRODUIT_SUCRE = 'produit sucre'
         OEUF = 'oeuf'
         ASSAISONNEMENT = 'assaisonnement'
@@ -59,7 +62,12 @@ class IngredientRecette(models.Model):
         Recette, on_delete=models.CASCADE, default=''
     )
     # attribut du modele
-    quantite = models.DecimalField(max_digits=4, decimal_places=2)
+    quantite = models.DecimalField(
+        max_digits=4, 
+        decimal_places=2,
+        blank = True,
+        null = True
+    )
     mesure = models.CharField(
         max_length = 25,
         choices =  Mesures.choices,
@@ -67,7 +75,11 @@ class IngredientRecette(models.Model):
         null = True
     )
     # TODO: peut-être rempli si l'ingrédient est une viande
-    coupe_de_viande = models.CharField(max_length=25, blank=True, null=True)
+    coupe_de_viande = models.CharField(
+        max_length = 25, 
+        blank = True, 
+        null = True
+    )
 
     # méthode toString
     def __str__(self):
@@ -81,8 +93,12 @@ class IngredientRecette(models.Model):
         if self.mesure:
             return str(self.quantite) + " " + self.mesure + " " + self.ingredient.nomIngredient  
         
-        # si aucun des deux est spécifiés
-        return str(self.quantite) + " " + self.ingredient.nomIngredient
+        # si aucun des deux est spécifiés et qu'il y a une quantité
+        if self.quantite:
+            return str(self.quantite) + " " + self.ingredient.nomIngredient
+
+        # Si rien n'est spécifié
+        return self.ingredient.nomIngredient
 
 # modèle pour contenir les étapes de préparations
 class EtapePreparation(models.Model):

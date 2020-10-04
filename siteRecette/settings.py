@@ -58,7 +58,7 @@ ROOT_URLCONF = 'siteRecette.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'login'), os.path.join(BASE_DIR,'siteRecette'), os.path.join(BASE_DIR, 'UserProfile')],
+        'DIRS': [os.path.join(BASE_DIR,'login'), os.path.join(BASE_DIR,'siteRecette'), os.path.join(BASE_DIR, 'UserProfile'),os.path.join(BASE_DIR,'recette')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

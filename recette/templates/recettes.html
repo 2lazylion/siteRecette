@@ -1,0 +1,29 @@
+{% extends '../templates/base.html' %}
+{% block title %}
+    Recettes
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-success">Recettes</h1>
+    <!-- TODO: barre de recherche -->
+    <div class="">
+        <form action="" method="get">
+            <div class="form-group row">
+                <input class="form-control col-9 ml-5" type="search" name="" id="">
+                <button class="btn btn-secondary col-1" type="submit"><i class="fa fa-search"></i></button>
+            </div>    
+        </form>
+        
+    </div>
+    <!-- affiche les noms de recettes -->
+    <div class="row">
+        <ul style="list-style-type:none;">
+            {% for recette in recettes %}
+            <li>
+                <a href="{% url 'recette' %}?id={{ recette.id }}">{{ recette.nomRecette }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+{% endblock %}
