@@ -8,13 +8,24 @@
 <h1 class="text-success"> {{ recette.nomRecette }} </h1>
 
 <!-- affiche les ingrédients -->
-<table class="table">
-    
-    <tr>
-        <td></td>
-    </tr>
+<div class="row">
+    <h2>Ingrédients</h2>
+    <table class="table">
+    {% for ingredient in recette.ingredients %}
+        <tr>
+            <td>{{ ingredient }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
 
-</table>
 <!-- affiche les étapes de préparation -->
-
+<div class="row">
+    <h2>Préparation</h2>
+    <ol>
+    {% for preparation in recette.etapePreparation %}
+        <li>{{ preparation.etape }}</li>
+    {% endfor %}
+    </ol>   
+</div>
 {% endblock %}

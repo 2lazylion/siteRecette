@@ -7,9 +7,10 @@
     <h1 class="text-success">Recettes</h1>
     <!-- TODO: barre de recherche -->
     <div class="">
+        {% csrf_token %}
         <form action="" method="get">
             <div class="form-group row">
-                <input class="form-control col-9 ml-5" type="search" name="" id="">
+                <input class="form-control col-9 ml-5" type="search" name="search">
                 <button class="btn btn-secondary col-1" type="submit"><i class="fa fa-search"></i></button>
             </div>    
         </form>
@@ -20,7 +21,7 @@
         <ul style="list-style-type:none;">
             {% for recette in recettes %}
             <li>
-                <a href="{% url 'recette' %}?id={{ recette.id }}">{{ recette.nomRecette }}</a>
+                <a href="{% url 'recette' %}?id={{ recette.id }}">{{ recette }}</a>
             </li>
             {% endfor %}
         </ul>

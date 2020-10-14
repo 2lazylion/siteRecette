@@ -7,6 +7,8 @@ class Recette(models.Model):
     nomRecette = models.CharField(max_length=50, db_index=True)
     description = models.TextField(max_length=255, blank=True)
     #preparation = models.TextField(max_length=255)
+    ingredients = []
+    etapePreparation = []
 
     def __str__(self):
         return self.nomRecette
