@@ -30,10 +30,10 @@ def getRecette(request):
     recette = Recette.objects.get(pk=id)
 
     # récupère les ingrédients qui sont relier à la recette de la bd
-    recette.ingredients = [ingredientRecette for ingredientRecette in IngredientRecette.objects.filter(recette=id)]
+    recette.ingredients = IngredientRecette.objects.filter(recette__id=id)
 
     # récupère les étapes de préparation qui sont relier à la recette de la bd
-    recette.etapePreparation = [etapePreparation for etapePreparation in EtapePreparation.objects.filter(recette=id)] 
+    recette.etapePreparation = EtapePreparation.objects.filter(recette__id=id) 
 
     # retourne la recette à la page web
     return render(request, 'templates/recette.html', {'recette': recette})
