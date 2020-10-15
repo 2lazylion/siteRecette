@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout as django_logout
 # Create your views here.
 def loginForm(request):
     # initie le form pour qu'il apparaisse sur la page
-    form = Login()
+    form = LoginForm()
     
     # la première fois qu'on appel la fonction loginForm,
     # la méthode sera 'GET'. Elle va donc render la page
@@ -16,7 +16,7 @@ def loginForm(request):
     if request.method == 'POST':
         
         # l'objet Login doit s'assurer de valider le type des entrées
-        form = Login(request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']

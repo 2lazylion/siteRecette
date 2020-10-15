@@ -1,17 +1,23 @@
 {% extends '../templates/base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}
     Login
 {% endblock %}
 
+{% block titlePage %}
+    Login
+{% endblock %}
+
 {% block login %}
-<div class="row col-10">
+
+<div class="row col-10 d-table m-3">
     <form action="" method="POST">
         <!-- Very important Cross-site Request Forgery Token -->
         {% csrf_token %}
         <table>
-            {{ form }}
+            {{ form|crispy }}
         </table>
-        <input type="submit" value="Connexion">
+        <input type="submit" value="Connexion" class="btn btn-primary">
     </form>
 </div>
 {% endblock %}

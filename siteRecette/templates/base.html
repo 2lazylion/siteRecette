@@ -7,7 +7,6 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>
         {% block title %}
-        Document
         {% endblock %}
     </title>
 </head>
@@ -21,7 +20,12 @@
     </div>
     
     <!-- container -->
-    <div class="container bg-light fill">
+    <div class="container bg-light fill p-4">
+        <!-- titre de la page -->
+        <h1 class="text-success">
+            {% block titlePage %}
+            {% endblock %}
+        </h1>
         <!-- login -->
         {% block login %}
         {% endblock %}

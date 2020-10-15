@@ -3,10 +3,14 @@
     Recettes
 {% endblock %}
 
+{% block titlePage %}
+        Recettes
+{% endblock %}
+
 {% block content %}
-    <h1 class="text-success">Recettes</h1>
     <!-- TODO: barre de recherche -->
     <div class="">
+        <!-- Very important Cross-site Request Forgery Token -->
         {% csrf_token %}
         <form action="" method="get">
             <div class="form-group row">
@@ -14,10 +18,10 @@
                 <button class="btn btn-secondary col-1" type="submit"><i class="fa fa-search"></i></button>
             </div>    
         </form>
-        
     </div>
+
     <!-- affiche les noms de recettes -->
-    <div class="row">
+    <div class="row m-3">
         <ul style="list-style-type:none;">
             {% for recette in recettes %}
             <li>

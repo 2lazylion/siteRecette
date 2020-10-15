@@ -7,11 +7,20 @@ def getRecettes(request):
     # verifie si le client à utilisé la barre de recherche
     if request.method == 'GET' and 'search' in request.GET:
         # prend le nom de la recette à partir des paramètres de la requête
-        nomRecette = request.GET["search"]
+        recherche = request.GET["search"]
         
         # récupère toutes les recettes de la base de données
-        recettes = Recette.objects.filter(nomRecette__icontains=nomRecette)
+        # filtre selon un nom de la recette
+        if Recette.objects.filter(nomRecette__icontains=recherche):
+            recettes = Recette.objects.filter(nomRecette__icontains=recherche)
         
+        # filtre selon un ingrédient
+        elif Recette.objects.filter(ingredientrecette__ingredient__nomIngredient__icontains=recherche):
+            recettes = Recette.objects.filter(ingredientrecette__ingredient__nomIngredient__icontains=recherche)
+
+        else: 
+            recettes = None
+            
         # retourne les recettes à la page web
         return render(request, 'templates/recettes.html', {'recettes': recettes})
     
